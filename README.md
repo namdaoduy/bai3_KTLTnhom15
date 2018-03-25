@@ -16,26 +16,6 @@
     • 1 từ kết thúc bằng dấu cách space, tab, newline, hoặc end-offile
     • Không có từ nào quá 20 ký tự
 
-##Ví dụ về Input and Output
----
-INPUT
-
-|Tune      every     heart and every     voice.             |
-|  Bid every      bank withdrawal.                          |
-|Let's   all                with our accounts      rejoice. |
-|           In funding   Old Nassau.                        |
-|    In funding Old Nassau we spend more money every  year. |
-|Our      banks shall give,      while we shall live.       |
-|    We're funding  Old Nassau.                             |
-
-OUTPUT
-
-|Tune every heart and every voice. Bid every bank  |
-|withdrawal. Let's all with our accounts rejoice.  |
-|In funding Old Nassau. In funding Old Nassau we   |
-|spend more money every year. Our banks shall give,|
-|while we shall live. We're funding Old Nassau.    |
-
 ## Lưu ý
 ---
 - Kiểm tra mọi trường hợp nhập lỗi
