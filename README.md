@@ -17,17 +17,17 @@
 
 - Đầu ra: Cùng nội dung, nhưng căn trái và căn phải
 
-+ Dồn các từ tối đa có thể trên 1 dòng 50 ký tự
+-- Dồn các từ tối đa có thể trên 1 dòng 50 ký tự
 
-+ Thêm các dấu cách cần thiết giữa các từ để căn phải
+-- Thêm các dấu cách cần thiết giữa các từ để căn phải
 
-+ Không cần căn phải dòng cuối cùng
+-- Không cần căn phải dòng cuối cùng
 
 - Để đơn giản hóa, giả định rằng :
 
-+ 1 từ kết thúc bằng dấu cách space, tab, newline, hoặc end-offile
+-- 1 từ kết thúc bằng dấu cách space, tab, newline, hoặc end-offile
 
-+ Không có từ nào quá 20 ký tự
+-- Không có từ nào quá 20 ký tự
 
 ## Lưu ý
 ---
