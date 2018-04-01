@@ -1,0 +1,2 @@
+void printToScreen();
+void writeToFile();
