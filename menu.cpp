@@ -30,8 +30,17 @@ do{
         cin>>selection;
         fflush(stdin);
     }while(selection!=1&&selection!=2&&selection!=3);
+	
+	
+	
+	//Xóa đi,không cần thiết,chỉ để test cấu trúc chương trình
     char inputText[20];
-    inputText[0]='\0';
+    inputText[0]='\0';//bằng '\0' để coi như chưa có văn bản nhập vào
+	
+	
+	
+	
+	
 if(selection==2&&inputText[0]=='\0')    //Nếu văn bản chưa được nhập mà người dùng yêu câu căn lề
 {
     cout<<"Chua nhap van ban,hay nhap van ban truoc!"<<endl;
