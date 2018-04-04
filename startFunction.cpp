@@ -1,90 +1,113 @@
-#include"startFunction.h"
-#include"smallFunction.h"
-#include"main.h"
-#include<iostream>
-#include<cstdio>
-#include<conio.h>
+// startFunction.cpp
+// Chứa các hàm bắt đầu việc thực hiện các chức năng chính
+
+#include "startFunction.h"
+#include "smallFunction.h"
+#include "main.h"
+#include <iostream>
+#include <cstdio>
+#include <conio.h>
+
 using namespace std;
-//hàm thay đổi thông số cài đặt
-void startOptional(int &maxLen,int &lineLen,int &wordLen)
-{
-    cout<<"-----------THIET LAP THONG SO:"<<endl;
-    do{
+
+
+void startGetInput() {
+    cout << "--------NHAP VAN BAN " << endl
+         << "    Chon phuong thuc nhap van ban: " << endl
+         << "        1. Nhap tu ban phim " << endl
+       	 << "        2. Trich xuat tu file " << endl;
+
+    int selection = 0;
+    do {
         cin.clear();
-        cout<<"---Nhap so ki tu toi da cua van ban nhap vao:";
-        cin>>maxLen;
+        cout << "    Chon chuc nang (1-2): ";
+        cin >> selection;
         fflush(stdin);
-        }while(maxLen<=0);
-    do{
-        cin.clear();
-        cout<<"---Nhap so ki tu toi da cua tu:";
-        cin>>wordLen;
-        fflush(stdin);
-        }while(wordLen<=0||wordLen>maxLen);
-    do{
-        cin.clear();
-        cout<<"---Nhap so ki tu cua dong:";
-        cin>>lineLen;
-        fflush(stdin);
-        }while(lineLen<=0||lineLen<wordLen);
-    cout<<"Thiet lap thanh cong!"<<endl;
-    cout<<"..........Press any key to continute.........."<<endl;
+    }
+    while (selection!=1 && selection!=2);
+
+    if (selection == 1)
+        getInputConsole(); // Hàm lấy input từ console
+    else
+        getInputFile(); // Hàm lấy input từ file
+
+    return;
+}
+
+
+// Hàm thay đổi thông số cài đặt
+void startOptional() {
+    cout << "--------THIET LAP THONG SO: " << endl;
+
+    optionInputLen();
+    optionWordLen();
+    optionLineLen();
+
+    cout << endl
+         << "    Thiet lap thanh cong! " << endl
+         << "    Press any key to continue... " << endl;
     getch();
+
+    return;
 }
 
 
-//chưa hoàn thành!
-//hàm lấy dữ liệu từ keyboard
-void startGetInputKB()
-{
-    cout<<"This function is used to get input from keyboard"<<endl;
-}
+void startAlign() {
+    cout << "    Chon kieu can le: " << endl
+      	 << "		 1. Can le trai " << endl
+       	 << "		 2. Can le phai " << endl
+       	 << "		 3. Can le giua " << endl
+         << "        4. Can le 2 ben " << endl;
 
-
-//chưa hoàn thành!
-//hàm lấy dữ liệu từ file
-void startGetInputFile()
-{
-    cout<<"This function is used to extract input from file!"<<endl;
-}
-
-
-//chưa hoàn thành!
-//hàm xử lí căn lề trái văn bản
-void startLeft()
-{
-	cout<<"This function is used to handle & making outputText"<<endl;
-}
-
-
-//chưa hoàn thành!
-//hàm xử lí căn lề trái phải văn bản
-void startLeftRight()
-{
-	cout<<"This function is used to handle & making outputText"<<endl;
-}
-
-
-//chưa hoàn thành!
-//hàm xử lí căn giữa văn bản
-void startMiddle()
-{
-	cout<<"This function is used to handle & making outputText"<<endl;
-}
-
-
-//hàm in kết quả ra màn hình hoặc file
-void printOutput()
-{
-	cout<<"Chon phuong thuc xuat Output Text:"<<endl
-		<<"		1.Xuat van ban ra man hinh"<<endl
-		<<"		2.Xuat van ban ra file"<<endl;
-	do{
+    int selection = 0;
+    do {
         cin.clear();
-        cout<<"->Chon chuc nang(1-2):";
-        cin>>selection;
+        cout << endl
+             << "    Chon chuc nang (1-4): ";
+        cin >> selection;
         fflush(stdin);
-                }while(selection!=1&&selection!=2);
-                if(selection==1) printToScreen();
-                else writeToFile();
+    } while (selection < 1 || selection > 4);
+
+    switch (selection) {
+      case 1:
+		alignLeft(); // căn lề trái
+	    output(); // in kết quả
+		break;
+	  case 2:
+		alignRight(); // căn lề phải
+	    output(); // in kết quả
+		break;
+      case 3:
+    	alignMiddle(); // căn lề giữa
+        output(); // in kết quả
+		break;
+      case 4:
+        alignJustify(); // căn lề đều
+        output(); // in kết quả
+        break;
+    }
+    return;
+}
+
+
+// Hàm in kết quả ra màn hình hoặc file
+void output() {
+	cout << "   Chon phuong thuc xuat output Text:" << endl
+		 << "		1. Xuat van ban ra man hinh" << endl
+		 << "		2. Xuat van ban ra file" << endl;
+
+    int selection = 0;
+	do {
+        cin.clear();
+        cout << " -> Chon chuc nang(1-2):";
+        cin >> selection;
+        fflush(stdin);
+    } while (selection!=1 && selection!=2);
+
+    if(selection == 1)
+        outputConsole();
+    else
+        outputFile();
+
+    return;
 }

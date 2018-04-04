@@ -1,7 +1,7 @@
-void startOptional(int &maxLen,int &lineLen,int &wordLen);
-void startGetInputKB();
-void startGetInputFile();
-void startLeft();
-void startLeftRight();
-void startMiddle();
-void printOutput();
+// startFunction.h
+// Chứa declaration của các hàm trong startFunction.cpp
+
+void startGetInput();
+void startAlign();
+void startOptional();
+void output();
