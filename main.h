@@ -4,7 +4,6 @@
 
 #pragma once
 extern int outputMode;
-extern int max_input_len;
 extern int max_word_len;
 extern int max_line_len;
 
