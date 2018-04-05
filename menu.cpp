@@ -40,12 +40,13 @@ void selectMenu() {
     }
     while (selection!=1 && selection!=2 && selection!=3);
 
-    // Nếu văn bản chưa được nhập mà người dùng yêu câu căn lề
+    // Nếu văn bản chưa được nhập mà người dùng yêu câu căn lề,báo lỗi
     int notext=0;
     text=fopen("text.txt","r");
     if(fgetc(text)==EOF) notext=1;
+    fclose(text);
     if ((selection==3)&&(notext==1)) {
-        cout << "    Chua nhap van ban, hay nhap van ban truoc! " << endl<<notext;
+        cout << "    Chua nhap van ban, hay nhap van ban truoc! " << endl;
         selectMenu();
         return;
     }
@@ -53,13 +54,14 @@ void selectMenu() {
     //Thực hiện chức năng theo lựa chọn người dùng
     switch (selection) {
       case 1:
-        startGetInput();
+        startGetInput();//Nhập văn bản
         break;
       case 2:
-        startOptional();
+        startOptional();//Thiết lập thông số
         break;
       case 3:
-        startAlign();
+        startAlign();//Căn lề và đưa ra kết quả
+        output();
         break;
     }
 

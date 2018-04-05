@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1522899666 source:e:\desktop\ktlt-bai3\main.cpp
+	"menu.h"
+	<iostream>
+	<cstdio>
+
+1522798554 e:\desktop\ktlt-bai3\menu.h
+
+1522899599 source:e:\desktop\ktlt-bai3\menu.cpp
+	<iostream>
+	<cstdio>
+	"startFunction.h"
+	"smallFunction.h"
+	"menu.h"
+	"main.h"
+
+1522798554 e:\desktop\ktlt-bai3\startfunction.h
+
+1522798554 e:\desktop\ktlt-bai3\smallfunction.h
+
+1522891603 e:\desktop\ktlt-bai3\main.h
+
+1522901552 source:e:\desktop\ktlt-bai3\smallfunction.cpp
+	<iostream>
+	<cstdio>
+	<conio.h>
+	"main.h"
+	"smallFunction.h"
+
+1522900727 source:e:\desktop\ktlt-bai3\startfunction.cpp
+	"startFunction.h"
+	"smallFunction.h"
+	"Process.h"
+	"main.h"
+	<iostream>
+	<cstdio>
+	<conio.h>
+
+1522878776 e:\desktop\ktlt-bai3\process.h
+
+1522900870 source:e:\desktop\ktlt-bai3\process.cpp
+	"Process.h"
+	"main.h"
+	<stdio.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<iostream>
+

@@ -41,8 +41,12 @@ void startGetInput() {
 }
 
 
+
 // Hàm thay đổi thông số cài đặt
 void startOptional() {
+    cout<<"---THONG SO HIEN TAI:"<<endl
+        <<"-So ki tu nhieu nhat/tu:"<<max_word_len<<endl
+        <<"-So ki tu nhieu nhat/dong:"<<max_line_len<<endl;
     cout << "--------THIET LAP THONG SO: " << endl;
 
     optionWordLen();
@@ -57,12 +61,15 @@ void startOptional() {
 }
 
 
+
+//Hàm thực hiên các thao tác căn lề
 void startAlign() {
     cout << "    Chon kieu can le: " << endl
       	 << "		 1. Can le trai " << endl
        	 << "		 2. Can le phai " << endl
        	 << "		 3. Can le giua " << endl
-       	 << "                 4. Can le 2 ben " << endl;
+         << "                 4. Can le 2 ben " << endl;
+         //Chọn chế độ căn lề 1-4
     do {
         cin.clear();
         cout << endl
@@ -71,6 +78,8 @@ void startAlign() {
         fflush(stdin);
     } while (outputMode < 1 || outputMode > 4);
 
+    fout = fopen("output.txt", "w");
+    text=fopen("text.txt","r");
     char word[max_word_len + 1];
     int wordLen;
     char line[max_line_len + 1];
@@ -78,12 +87,12 @@ void startAlign() {
     int numWords = 0;
 
 
-
+//Hàm xóa line
 ClearLine(line, lineLen, numWords);
     for(;;) {
         wordLen = ReadWord(word);
 
-        // Da nhap het tu
+        //Nếu hết từ
         if (wordLen == 0) {
             if (outputMode != 4)
                 WriteLine(line, lineLen, numWords);
@@ -92,20 +101,24 @@ ClearLine(line, lineLen, numWords);
             break;
         }
 
-        // Tu khong vua dong hien tai, tao dong moi
+        // Nếu từ không vừa dòng,tạo dòng mới
         if ((lineLen > 0) && (lineLen + 1 + wordLen > max_line_len)) {
             WriteLine(line, lineLen, numWords);
             ClearLine(line, lineLen, numWords);
         }
 
-        // Them tu vao dong
+        //Nối thêm từ vào dòng
         AddWord(word, line, lineLen);
         numWords++;
-    }
 
+    }
+fclose(fout);
+fclose(text);
 
     return;
 }
+
+
 
 
 // Hàm in kết quả ra màn hình hoặc file

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdio>
+#include<conio.h>
 #include "main.h"
 #include "smallFunction.h"
 extern FILE* fin;
@@ -13,14 +14,20 @@ using namespace std;
 
 // Hàm lấy input từ console và lưu vào file text.txt
 void getInputConsole() {
+    cout<<"Nhap van ban tu ban phim,ket thuc boi End-of-file:"<<endl;
 	int ch;
-	text = fopen("text.txt", "w");
+	text = fopen("text.txt", "w+");
 	while ((ch=getchar()) != EOF) {
 		fputc(ch,text);
 	}
+	//Kiểm tra văn bản có rỗng hay không
+	fseek(text,0,SEEK_SET);
+	if((ch=fgetc(text))==EOF) cout<<"___Van ban trong,nhap that bai!___ "<<endl;
+    else cout<<endl<<"___Nhap van ban thanh cong!___"<<endl;
 	fclose(text);
 	return;
 }
+
 
 
 // Hàm lấy input từ file và lưu vào file text.txt
@@ -34,28 +41,36 @@ void getInputFile() {
 
 	// Đọc dữ liệu từ file vào input cho đến khi hết file
 	int ch;
-	text=fopen("text.txt","w");
+	text=fopen("text.txt","w+");
 	while ((ch=fgetc(fin)) != EOF) {
 		fputc((char)ch,text);
 	}
-
-	fclose(fin);
+	//Kiểm tra file có rỗng hay không
+	fseek(text,0,SEEK_SET);
+	if((ch=fgetc(text))==EOF) cout<<"___File rong,nhap that bai!___ "<<endl;
+    else cout<<endl<<"___Nhap van ban thanh cong!___"<<endl;
+    fclose(fin);
 	fclose(text);
+
 	return;
 }
 
 
+
+//Hàm phụ thiết lập độ dài từ tối đa
 void optionWordLen() {
 	do {
         cin.clear();
         cout << "---Nhap so ki tu toi da cua tu:";
         cin >> max_word_len;
         fflush(stdin);
-    } while (max_word_len <= 0 || max_word_len > max_input_len);
+    } while (max_word_len <= 0);
 
 	return;
 }
 
+
+//Hàm phụ thiết lập độ dài dòng
 void optionLineLen() {
 	do {
         cin.clear();
@@ -66,14 +81,34 @@ void optionLineLen() {
 
 	return;
 }
+
+
+
+//hàm in output ra màn hình
 void outputConsole()
 {
-    cout<<"hi!";
+cout<<"---Van ban sau khi duoc can le:"<<endl;
+fout=fopen("output.txt","r");
+int ch;
+while((ch=fgetc(fout))!=EOF) putchar(ch);
+fclose(fout);
+cout<<endl<<endl<< "    Press any key to continue... " << endl;
+getch();
 }
+
+
+
+//Hàm in output ra file(thông báo)
 void outputFile()
 {
-
-cout<<"hello!";
+cout<<"---Ghi thanh cong ra file output.txt"<<endl
+    <<"---Noi dung file:"<<endl;
+fout=fopen("output.txt","r");
+int ch;
+while((ch=fgetc(fout))!=EOF) putchar(ch);
+fclose(fout);
+cout<<endl<<endl<<endl<< "    Press any key to continue... " << endl;
+getch();
 }
 
 
