@@ -8,7 +8,7 @@
 #include "smallFunction.h"
 #include "menu.h"
 #include "main.h"
-extern FILE* text;
+
 
 using namespace std;
 
@@ -40,28 +40,29 @@ void selectMenu() {
     }
     while (selection!=1 && selection!=2 && selection!=3);
 
-    // Nếu văn bản chưa được nhập mà người dùng yêu câu căn lề,báo lỗi
-    int notext=0;
-    text=fopen("text.txt","r");
-    if(fgetc(text)==EOF) notext=1;
+    // Nếu văn bản chưa được nhập mà người dùng yêu câu căn lề, báo lỗi
+    int no_text = 0;
+    text = fopen("text.txt", "r");
+    if (fgetc(text) == EOF) 
+        no_text = 1;
     fclose(text);
-    if ((selection==3)&&(notext==1)) {
+    if ((selection == 3) && (no_text == 1)) {
         cout << "    Chua nhap van ban, hay nhap van ban truoc! " << endl;
         selectMenu();
         return;
     }
 
-    //Thực hiện chức năng theo lựa chọn người dùng
+    // Thực hiện chức năng theo lựa chọn người dùng
     switch (selection) {
       case 1:
-        startGetInput();//Nhập văn bản
+        startGetInput(); // Nhập văn bản
         break;
       case 2:
-        startOptional();//Thiết lập thông số
+        startOptional(); // Thiết lập thông số
         break;
       case 3:
-        startAlign();//Căn lề và đưa ra kết quả
-        output();
+        startAlign(); // Căn lề
+        output(); // In kết quả
         break;
     }
 

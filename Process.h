@@ -1,13 +1,13 @@
-int GetChar();
-int ReadWord(char *);
-void AddWord(char *, char *, int &);
+int getChar();
+int readWord(char *);
+void addWord(char *, char *, int &);
 
 
-void ClearLine(char *, int &, int &);
-void WriteLine(char *, int, int);
+void clearLine(char *, int &, int &);
+void writeLine(char *, int, int);
 
-void Center(char *, int);
-void Right(char *, int);
-void Justify(char *, int, int);
+void center(char *, int);
+void right(char *, int);
+void justify(char *, int, int);
 
-void PrintSpaces(int);
+void printSpaces(int);

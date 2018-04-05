@@ -3,27 +3,30 @@
 
 #include <iostream>
 #include <cstdio>
-#include<conio.h>
+#include <conio.h>
 #include "main.h"
 #include "smallFunction.h"
-extern FILE* fin;
-extern FILE* fout;
-extern FILE* text;
+
 using namespace std;
 
 
 // Hàm lấy input từ console và lưu vào file text.txt
 void getInputConsole() {
-    cout<<"Nhap van ban tu ban phim,ket thuc boi End-of-file:"<<endl;
+    cout << "    Nhap van ban tu ban phim, ket thuc boi Enter + Ctrl Z: " << endl;
 	int ch;
 	text = fopen("text.txt", "w+");
 	while ((ch=getchar()) != EOF) {
-		fputc(ch,text);
+		fputc(ch, text);
 	}
-	//Kiểm tra văn bản có rỗng hay không
-	fseek(text,0,SEEK_SET);
-	if((ch=fgetc(text))==EOF) cout<<"___Van ban trong,nhap that bai!___ "<<endl;
-    else cout<<endl<<"___Nhap van ban thanh cong!___"<<endl;
+
+	// Kiểm tra văn bản có rỗng hay không
+	fseek(text, 0, SEEK_SET);
+	if ((ch=fgetc(text)) == EOF) 
+		cout << "    Van ban trong, nhap that bai!" << endl;
+    else 
+		cout << endl
+			 << "    Nhap van ban thanh cong! " << endl;
+
 	fclose(text);
 	return;
 }
@@ -41,14 +44,20 @@ void getInputFile() {
 
 	// Đọc dữ liệu từ file vào input cho đến khi hết file
 	int ch;
-	text=fopen("text.txt","w+");
+	text = fopen("text.txt", "w+");
 	while ((ch=fgetc(fin)) != EOF) {
-		fputc((char)ch,text);
+		fputc((char)ch, text);
 	}
-	//Kiểm tra file có rỗng hay không
-	fseek(text,0,SEEK_SET);
-	if((ch=fgetc(text))==EOF) cout<<"___File rong,nhap that bai!___ "<<endl;
-    else cout<<endl<<"___Nhap van ban thanh cong!___"<<endl;
+
+	// Kiểm tra file có rỗng hay không
+	fseek(text, 0, SEEK_SET);
+	if ((ch=fgetc(text)) == EOF) 
+		cout << endl
+			 << "    File rong, nhap that bai! " << endl;
+    else 
+		cout << endl
+			 << "    Nhap van ban thanh cong! " << endl;
+
     fclose(fin);
 	fclose(text);
 
@@ -57,11 +66,11 @@ void getInputFile() {
 
 
 
-//Hàm phụ thiết lập độ dài từ tối đa
+// Hàm phụ thiết lập độ dài từ tối đa
 void optionWordLen() {
 	do {
         cin.clear();
-        cout << "---Nhap so ki tu toi da cua tu:";
+        cout << "        Nhap so ki tu toi da cua tu: ";
         cin >> max_word_len;
         fflush(stdin);
     } while (max_word_len <= 0);
@@ -70,11 +79,11 @@ void optionWordLen() {
 }
 
 
-//Hàm phụ thiết lập độ dài dòng
+// Hàm phụ thiết lập độ dài dòng
 void optionLineLen() {
 	do {
         cin.clear();
-        cout << "---Nhap so ki tu cua dong:";
+        cout << "        Nhap so ki tu cua dong: ";
         cin >> max_line_len;
         fflush(stdin);
     } while (max_line_len <= 0 || max_line_len < max_word_len);
@@ -84,31 +93,36 @@ void optionLineLen() {
 
 
 
-//hàm in output ra màn hình
-void outputConsole()
-{
-cout<<"---Van ban sau khi duoc can le:"<<endl;
-fout=fopen("output.txt","r");
-int ch;
-while((ch=fgetc(fout))!=EOF) putchar(ch);
-fclose(fout);
-cout<<endl<<endl<< "    Press any key to continue... " << endl;
-getch();
+// Hàm in output ra màn hình
+void outputConsole() {
+	cout << "----Van ban sau khi duoc can le:" << endl;
+	fout = fopen("output.txt","r");
+	int ch;
+	while ((ch = fgetc(fout)) != EOF) 
+		putchar(ch);
+	fclose(fout);
+
+	cout << endl
+		 << endl
+		 << "    Press any key to continue... " << endl;
+	getch();
 }
 
 
 
-//Hàm in output ra file(thông báo)
-void outputFile()
-{
-cout<<"---Ghi thanh cong ra file output.txt"<<endl
-    <<"---Noi dung file:"<<endl;
-fout=fopen("output.txt","r");
-int ch;
-while((ch=fgetc(fout))!=EOF) putchar(ch);
-fclose(fout);
-cout<<endl<<endl<<endl<< "    Press any key to continue... " << endl;
-getch();
+// Hàm in output ra file (thông báo)
+void outputFile() {
+	cout << "----Ghi thanh cong ra file output.txt" << endl
+		 << "----Noi dung file: " << endl;
+	fout = fopen("output.txt", "r");
+	int ch;
+	while ((ch = fgetc(fout)) != EOF) 
+		putchar(ch);
+	fclose(fout);
+	cout << endl
+		 << endl 
+		 << "    Press any key to continue... " << endl;
+	getch();
 }
 
 

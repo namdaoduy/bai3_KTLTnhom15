@@ -5,12 +5,6 @@
 
 void getInputConsole();
 void getInputFile();
-char* initArray();
-
-void alignLeft();
-void alignRight();
-void alignMiddle();
-void alignJustify();
 
 void optionInputLen();
 void optionWordLen();

@@ -47,3 +47,52 @@
 	<string.h>
 	<iostream>
 
+1522919516 source:f:\admin\github\bai3_ktltnhom15\main.cpp
+	"menu.h"
+	<iostream>
+	<cstdio>
+
+1522660193 f:\admin\github\bai3_ktltnhom15\menu.h
+
+1522920025 source:f:\admin\github\bai3_ktltnhom15\menu.cpp
+	<iostream>
+	<cstdio>
+	"startFunction.h"
+	"smallFunction.h"
+	"menu.h"
+	"main.h"
+
+1522681670 f:\admin\github\bai3_ktltnhom15\startfunction.h
+
+1522920883 f:\admin\github\bai3_ktltnhom15\smallfunction.h
+
+1522921253 f:\admin\github\bai3_ktltnhom15\main.h
+	<iostream>
+
+1522920853 source:f:\admin\github\bai3_ktltnhom15\process.cpp
+	"process.h"
+	"main.h"
+	<stdio.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<iostream>
+
+1522919770 f:\admin\github\bai3_ktltnhom15\process.h
+
+1522920849 source:f:\admin\github\bai3_ktltnhom15\smallfunction.cpp
+	<iostream>
+	<cstdio>
+	<conio.h>
+	"main.h"
+	"smallFunction.h"
+
+1522919069 source:f:\admin\github\bai3_ktltnhom15\startfunction.cpp
+	"startFunction.h"
+	"smallFunction.h"
+	"Process.h"
+	"main.h"
+	<iostream>
+	<cstdio>
+	<conio.h>
+
