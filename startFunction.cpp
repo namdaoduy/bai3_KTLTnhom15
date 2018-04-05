@@ -3,10 +3,16 @@
 
 #include "startFunction.h"
 #include "smallFunction.h"
+#include "Process.h"
 #include "main.h"
 #include <iostream>
 #include <cstdio>
 #include <conio.h>
+extern FILE* fin;
+extern FILE* fout;
+extern FILE* text;
+
+
 
 using namespace std;
 
@@ -14,7 +20,7 @@ using namespace std;
 void startGetInput() {
     cout << "--------NHAP VAN BAN " << endl
          << "    Chon phuong thuc nhap van ban: " << endl
-         << "        1. Nhap tu ban phim " << endl
+         << "        1. Nhap tu ban phim" << endl
        	 << "        2. Trich xuat tu file " << endl;
 
     int selection = 0;
@@ -39,7 +45,6 @@ void startGetInput() {
 void startOptional() {
     cout << "--------THIET LAP THONG SO: " << endl;
 
-    optionInputLen();
     optionWordLen();
     optionLineLen();
 
@@ -57,35 +62,48 @@ void startAlign() {
       	 << "		 1. Can le trai " << endl
        	 << "		 2. Can le phai " << endl
        	 << "		 3. Can le giua " << endl
-         << "        4. Can le 2 ben " << endl;
-
-    int selection = 0;
+       	 << "                 4. Can le 2 ben " << endl;
     do {
         cin.clear();
         cout << endl
              << "    Chon chuc nang (1-4): ";
-        cin >> selection;
+        cin >> outputMode;
         fflush(stdin);
-    } while (selection < 1 || selection > 4);
+    } while (outputMode < 1 || outputMode > 4);
 
-    switch (selection) {
-      case 1:
-		alignLeft(); // căn lề trái
-	    output(); // in kết quả
-		break;
-	  case 2:
-		alignRight(); // căn lề phải
-	    output(); // in kết quả
-		break;
-      case 3:
-    	alignMiddle(); // căn lề giữa
-        output(); // in kết quả
-		break;
-      case 4:
-        alignJustify(); // căn lề đều
-        output(); // in kết quả
-        break;
+    char word[max_word_len + 1];
+    int wordLen;
+    char line[max_line_len + 1];
+    int lineLen = 0;
+    int numWords = 0;
+
+
+
+ClearLine(line, lineLen, numWords);
+    for(;;) {
+        wordLen = ReadWord(word);
+
+        // Da nhap het tu
+        if (wordLen == 0) {
+            if (outputMode != 4)
+                WriteLine(line, lineLen, numWords);
+            else
+                fputs (line, fout);
+            break;
+        }
+
+        // Tu khong vua dong hien tai, tao dong moi
+        if ((lineLen > 0) && (lineLen + 1 + wordLen > max_line_len)) {
+            WriteLine(line, lineLen, numWords);
+            ClearLine(line, lineLen, numWords);
+        }
+
+        // Them tu vao dong
+        AddWord(word, line, lineLen);
+        numWords++;
     }
+
+
     return;
 }
 
