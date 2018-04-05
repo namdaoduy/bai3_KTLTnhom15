@@ -5,126 +5,45 @@
 #include <cstdio>
 #include "main.h"
 #include "smallFunction.h"
-
+extern FILE* fin;
+extern FILE* fout;
+extern FILE* text;
 using namespace std;
 
 
-// Hàm lấy input từ console và lưu vào mảng
+// Hàm lấy input từ console và lưu vào file text.txt
 void getInputConsole() {
-	// Cấp phát bộ nhớ cho input mới
-	input_text = initArray();
-
-	// Lấy dữ liệu từ console đến khi gặp Ctrl + Z
-	int ch = getchar();
-	int curr = 0;
-	while (ch != EOF) {
-		input_text[curr] = (char)ch;
-		curr++;
-		ch = getchar();
+	int ch;
+	text = fopen("text.txt", "w");
+	while ((ch=getchar()) != EOF) {
+		fputc(ch,text);
 	}
+	fclose(text);
 	return;
 }
 
 
-// Hàm lấy input từ file và lưu vào mảng
+// Hàm lấy input từ file và lưu vào file text.txt
 void getInputFile() {
-	// Cấp phát bộ nhớ cho input mới
-	input_text = initArray();
-
 	// Mở file
-	FILE* input = NULL;
-	input = fopen("input.txt", "r+");
-	if (input == NULL) {
+	fin = fopen("input.txt", "r");
+	if (fin == NULL) {
 		cout << "    Khong the mo file! " << endl;
 		return;
 	}
 
-	// Đọc dữ liệu từ bàn phím vào file cho đến khi hết file
-	int ch = fgetc(input);
-	int curr = 0;
-	while (ch != EOF) {
-		input_text[curr] = (char)ch;
-		curr++;
-		ch = fgetc(input);
+	// Đọc dữ liệu từ file vào input cho đến khi hết file
+	int ch;
+	text=fopen("text.txt","w");
+	while ((ch=fgetc(fin)) != EOF) {
+		fputc((char)ch,text);
 	}
 
-	fclose(input);
+	fclose(fin);
+	fclose(text);
 	return;
 }
 
-
-// Hàm cấp phát bộ nhớ cho mảng tùy vào chỉ số max_input_len
-char* initArray() {
-	char* new_array = new char[max_input_len];
-	return new_array;
-}
-
-
-// Hàm căn chỉnh theo lề trái
-void alignLeft() {
-	// Cấp phát bộ nhớ cho mảng output
-	output_text = initArray();
-
-	int curr = 0;
-	while (input_text[curr] != NULL) {
-		readWord(curr);
-	}
-	return;
-}
-
-void readWord(int& curr) {
-	// Bỏ qua khoảng trắng
-	while (isspace(input_text[curr]))
-		curr++;
-
-	// Nếu đến hết mảng thì return
-	if (input_text[curr] == NULL)
-		return;
-
-	// Gán độ dài từ hiện tại là 1
-	int word_len = 1;
-	char* word = new char[max_word_len];
-	// Đọc từ đó vào biến word
-	while (!isspace(input_text[curr]) && word_len <= max_word_len) {
-		word[word_len-1] = input_text[curr];
-		word_len++;
-		curr++;
-	}
-	return;
-}
-
-
-void alignRight() {
-	cout << endl
-		 << " Not yet" << endl;
-	
-	return;
-}
-
-void alignMiddle() {
-	cout << endl
-		 << " Not yet" << endl;
-	
-	return;
-}
-
-void alignJustify() {
-	cout << endl
-		 << " Not yet" << endl;
-	
-	return;
-}
-
-void optionInputLen() {
-	do {
-        cin.clear();
-        cout << "---Nhap so ki tu toi da cua van ban nhap vao:";
-        cin >> max_input_len;
-        fflush(stdin);
-    } while (max_input_len <= 0);
-
-	return;
-}
 
 void optionWordLen() {
 	do {
@@ -147,23 +66,16 @@ void optionLineLen() {
 
 	return;
 }
+void outputConsole()
+{
+    cout<<"hi!";
+}
+void outputFile()
+{
 
-void outputConsole() {
-	cout << endl
-		 << " Not yet" << endl;
-	
-	return;
+cout<<"hello!";
 }
 
-void outputFile() {
-	cout << endl
-		 << " Not yet" << endl;
-	
-	return;
-}
 
-void success() {
-
-}
 
 
